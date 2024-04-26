@@ -1,7 +1,7 @@
 resource "azurerm_kubernetes_cluster_node_pool" "spot" {
   name                  = "spot"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.this.id
-  vm_size               = "Standard_DS2_v2"
+  vm_size               = "Standard_D2as_v5"
   vnet_subnet_id        = azurerm_subnet.subnet1.id
   orchestrator_version  = local.eks_version
   priority              = "Spot"
@@ -11,7 +11,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "spot" {
   enable_auto_scaling = true
   node_count          = 1
   min_count           = 1
-  max_count           = 10
+  max_count           = 1
 
   node_labels = {
     role                                    = "spot"

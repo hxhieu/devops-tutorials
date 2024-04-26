@@ -14,7 +14,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   name                = "${local.env}-${local.eks_name}"
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
-  dns_prefix          = "devaks1"
+  dns_prefix          = "hughradappdev"
 
   kubernetes_version        = local.eks_version
   automatic_channel_upgrade = "stable"
@@ -41,14 +41,14 @@ resource "azurerm_kubernetes_cluster" "this" {
 
   default_node_pool {
     name                 = "general"
-    vm_size              = "Standard_D2_v2"
+    vm_size              = "Standard_D2as_v5"
     vnet_subnet_id       = azurerm_subnet.subnet1.id
     orchestrator_version = local.eks_version
     type                 = "VirtualMachineScaleSets"
     enable_auto_scaling  = true
     node_count           = 1
     min_count            = 1
-    max_count            = 10
+    max_count            = 1
 
     node_labels = {
       role = "general"

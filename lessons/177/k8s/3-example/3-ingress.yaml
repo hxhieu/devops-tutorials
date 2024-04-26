@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: external-nginx
   rules:
-    - host: echo.antonputra.pvt
+    - host: echo.let-us.dev
       http:
         paths:
           - path: /
